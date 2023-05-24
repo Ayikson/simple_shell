@@ -1,3 +1,4 @@
+#include <shell.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
@@ -10,13 +11,13 @@
  */
 void prompt(int fd)
 {
-    struct stat buf;
-    int result = fstat(fd, &buf);
+	struct stat buf;
+	int result = fstat(fd, &buf);
 
-    if (result == 0 && S_ISCHR(buf.st_mode))
-    {
-        _puts("PROMPT");
-    }
+	if (result == 0 && S_ISCHR(buf.st_mode))
+	{
+		_puts("PROMPT");
+	}
 }
 
 /**
@@ -25,19 +26,17 @@ void prompt(int fd)
  * Return: void
  */
 
-#include <unistd.h>
-
 unsigned int _strlen(const char *str)
 {
-    unsigned int length = 0;
-    while (str[length] != '\0')
-        length++;
-    return length;
+	unsigned int length = 0;
+	while (str[length] != '\0')
+		length++;
+	return (length);
 }
 
 void _puts(const char *str)
 {
-    unsigned int length = _strlen(str);
-    write(STDOUT_FILENO, str, length);
+	unsigned int length = _strlen(str);
+	write(STDOUT_FILENO, str, length);
 }
 
