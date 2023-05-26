@@ -1,36 +1,40 @@
-#include <shell.h>
+#include "holberton.h"
+
 /**
- * free_all - frees all malloc dynamical memory space at end of main loop
+ * free_all - frees all malloc'd space at end of main loop
  * @tokens: pointer to tokens array
  * @path: pointer to path variable
  * @line: pointer to user input buffer
  * @fullpath: pointer to full path
  * @flag: flag marking if full_path was malloc'd
- * Return: void (0)
+ * Return: void
  */
 void free_all(char **tokens, char *path, char *line, char *fullpath, int flag)
 {
-	free(path);
-	free(tokens);
-	free(line);
-	if (flag)
-		free(fullpath);
+free(path);
+free(tokens);
+free(line);
+if (fullpath && flag == 1)
+free(fullpath);
 }
 
 /**
- * free_dp - free a string of memory pointer
- * @array:strings to be free
- * @length: double pointer
- * Return: void (0)
+ * free_dp - free string of memory pointer
+ * @array: strings to be freed
+ * @length: doble pointer
+ * Return: void
  */
 void free_dp(char **array, unsigned int length)
 {
-	for (unsigned int i = 0; i < length; i++)
-	{
-		free(array[i]);
-	}
-	free(array);
+unsigned int i;
+
+i = 0;
+while (i < length)
+{
+free(array[i]);
+array[i] = NULL;
+i++;
 }
-
-
-
+free(array);
+array = NULL;
+}

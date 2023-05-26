@@ -39,6 +39,7 @@ return (1);
 int shell_num_builtins(built_s builtin[])
 {
 	unsigned int i;
+
 	for (i = 0; builtin[i].name != NULL)
 		;
 			(i++);
